@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+@import 'reset';
+
+$font-stack: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+$primary-color: #fc0;
+$marginall: 0 2% 0 2%;
+$background: #333;
+$radius: 5px;
+$baseunit: 1em;
+$links: #0f0;
+
+body {
+    font: 100% $font-stack;
+    color: $primary-color;
+}
+
+/* NESTING STUFF */
+nav {
+
+    font-size: $baseunit;
+
+    ul {
+        background: $background;
+    }
+
+    li {
+        a {
+            color: $links;
+        }
+    }
+
+}
+
+/* MIXIN */
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+        -ms-border-radius: $radius;
+         -O-border-radius: $radius;
+            border-radius: $radius;
+}
+
+.box {
+    @include border-radius(10px);
+}
+
+.otherbox {
+    @include border-radius(5px);
+}
+
+/* EXTEND */
+.message {
+    border: 1px solid #fcf;
+    padding: 10px;
+    color: #333;
+    margin: 24px;
+}
+
+.success {
+    @extend .message;
+    border-color: green;
+    color: #fcf;
+}
+
+/* OPERATORS */
+.container {
+    width: 100%;
+}
+
+article {
+    float: left;
+    width: 600px / 960px * 100%;
+}
+
+aside {
+    float: right;
+    width: 300px / 960px * 100%;
+    font-size: $baseunit * 2;
+}
